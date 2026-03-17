@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium B2B Shirt Manufacturer | Delhi Shirts Co.</title>
+    <meta name="description" content="Top-tier shirt manufacturer in Karol Bagh, Delhi. Bulk orders for retailers and exporters. MOQ starting at 50 pieces.">
+    
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(20, 184, 166, 0.4)',
+                        'card-hover': '0 25px 50px -12px rgba(0,0,0,0.15)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'marquee': 'marquee 25s linear infinite',
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shine': 'shine 3s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .bg-mesh {
+            background-color: #f8fafc;
+            background-image: radial-gradient(at 40% 20%, hsla(170,100%,93%,1) 0px, transparent 50%),
+                              radial-gradient(at 80% 0%, hsla(210,100%,95%,1) 0px, transparent 50%),
+                              radial-gradient(at 0% 50%, hsla(170,100%,93%,1) 0px, transparent 50%);
+        }
+
+        .btn-shine {
+            background: linear-gradient(110deg, #0d9488 10%, #14b8a6 25%, #0d9488 40%);
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+        .btn-shine:hover {
+            background-position: right center;
+        }
+
+        /* Hide scrollbar for marquee */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* View Transition specific */
+        .page-view {
+            display: none;
+        }
+        .page-view.active {
+            display: block;
+        }
+        
+        #preloader {
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-slate-900 flex flex-col items-center justify-center">
+        <div class="text-3xl font-bold tracking-tighter text-white mb-4 flex items-center gap-2">
+            Delhi<span class="text-brand-500">Shirts</span>Co.
+        </div>
+        <div class="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+            <div class="h-full bg-brand-500 rounded-full animate-[marquee_1s_ease-in-out_infinite] w-1/2"></div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="switchView('view-home')">
+                    <span class="text-2xl font-bold tracking-tighter text-slate-900">
+                        Delhi<span class="text-brand-600">Shirts</span>Co.
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="switchView('view-home')" class="nav-link text-sm font-semibold text-brand-600 hover:text-brand-600 transition-colors" data-target="view-home">Home</button>
+                    <button onclick="switchView('view-collection')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-collection">Collection</button>
+                    <button onclick="switchView('view-process')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-process">Process & Trust</button>
+                    <button onclick="switchView('view-contact')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-contact">Contact</button>
+                    <button onclick="switchView('view-contact')" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        Get Bulk Price
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <button onclick="switchView('view-home')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-brand-600 bg-brand-50 rounded-xl" data-target="view-home">Home</button>
+                <button onclick="switchView('view-collection')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-collection">Collection</button>
+                <button onclick="switchView('view-process')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-process">Process</button>
+                <button onclick="switchView('view-contact')" class="w-full mt-4 block px-4 py-4 text-base font-bold text-white bg-slate-900 rounded-xl text-center shadow-lg">Get Bulk Price</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA (SPA Container) -->
+    <main class="flex-grow pt-20">
+
+        <!-- ================= PAGE: HOME ================= -->
+        <div id="view-home" class="page-view active animate-fade-in bg-mesh min-h-screen">
+            <!-- Hero Section -->
+            <section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+                <div class="absolute top-0 -left-4 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+                <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" style="animation-delay: 2s;"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                        <!-- Left Content -->
+                        <div class="max-w-2xl">
+                            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white border border-brand-100 shadow-sm text-brand-700 text-sm font-bold mb-8">
+                                <span class="relative flex h-2.5 w-2.5">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-600"></span>
+                                </span>
+                                <span>Accepting New Bulk Orders for 2026</span>
+                            </div>
+                            
+                            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-6">
+                                Crafting <span class="font-serif italic font-normal text-brand-600">Premium</span><br/>
+                                Shirts in Delhi.
+                            </h1>
+                            
+                            <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed max-w-lg">
+                                Direct from our Karol Bagh factory to your retail shelves. Export-quality fabrics, impeccable stitching, and factory-direct pricing to maximize your margins.
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                                <button onclick="switchView('view-contact')" class="btn-shine inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white rounded-full shadow-glow hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                                    Request Bulk Order
+                                    <i class="ph-bold ph-arrow-right ml-2 text-xl"></i>
+                                </button>
+                                <button onclick="switchView('view-collection')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 bg-white border-2 border-slate-100 rounded-full hover:bg-slate-50 hover:border-slate-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 group">
+                                    View Collection
+                                    <i class="ph-bold ph-storefront ml-2 text-xl text-slate-400 group-hover:text-brand-600 transition-colors"></i>
+                                </button>
+                            </div>
+
+                            <!-- Trust Badge Mini -->
+                            <div class="flex items-center space-x-4 p-4 bg-white/60 backdrop-blur-md rounded-2xl border border-white inline-flex shadow-sm">
+                                <div class="flex -space-x-3">
+                                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Client">
+                                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Client">
+                                    <div class="w-12 h-12 rounded-full border-2 border-white bg-brand-50 flex items-center justify-center text-sm font-bold text-brand-700">+98</div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900">100+ B2B Clients Active</p>
+                                    <p class="text-xs text-slate-500 font-medium">MOQ Starting at just 50 Pieces</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Image Grid (Modern overlapping layout) -->
+                        <div class="relative lg:ml-auto h-[600px] w-full hidden md:block">
+                            <!-- Main Image -->
+                            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Folded Shirts" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-[2rem] shadow-2xl z-10 animate-float border-4 border-white">
+                            <!-- Secondary Image -->
+                            <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fabric details" class="absolute bottom-0 left-0 w-2/3 h-2/3 object-cover rounded-[2rem] shadow-2xl z-20 border-4 border-white" style="animation: float 7s ease-in-out infinite reverse;">
+                            
+                            <!-- Floating stat -->
+                            <div class="absolute top-1/2 -left-8 z-30 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 transform -translate-y-1/2">
+                                <div class="w-14 h-14 bg-gradient-to-br from-brand-400 to-brand-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                                    <i class="ph-bold ph-medal text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-base font-bold text-slate-900">Export Quality</p>
+                                    <p class="text-sm text-slate-500">100% Premium Cotton</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dynamic Logo Marquee -->
+            <section class="py-12 bg-white border-y border-slate-100 overflow-hidden relative">
+                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+                
+                <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by Premium Retailers Pan-India</p>
+                
+                <div class="flex overflow-hidden no-scrollbar w-full">
+                    <div class="flex space-x-16 items-center animate-marquee whitespace-nowrap opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                        <!-- Repeated logos for infinite effect -->
+                        <span class="text-2xl font-bold font-serif mx-8">STYLE<span class="text-slate-400">MART</span></span>
+                        <span class="text-2xl font-black tracking-tighter mx-8">URBAN<span class="font-light">MENS</span></span>
+                        <span class="text-2xl font-bold italic mx-8">Trend<span class="not-italic text-slate-400">Setters</span></span>
+                        <span class="text-2xl font-bold tracking-widest mx-8">VOGUE<span class="text-slate-400">INDIA</span></span>
+                        <span class="text-2xl font-semibold mx-8">The<span class="font-bold">Apparel</span>Co.</span>
+                        <!-- Duplicate -->
+                        <span class="text-2xl font-bold font-serif mx-8">STYLE<span class="text-slate-400">MART</span></span>
+                        <span class="text-2xl font-black tracking-tighter mx-8">URBAN<span class="font-light">MENS</span></span>
+                        <span class="text-2xl font-bold italic mx-8">Trend<span class="not-italic text-slate-400">Setters</span></span>
+                        <span class="text-2xl font-bold tracking-widest mx-8">VOGUE<span class="text-slate-400">INDIA</span></span>
+                        <span class="text-2xl font-semibold mx-8">The<span class="font-bold">Apparel</span>Co.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="py-24 bg-slate-50 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">The Factory Advantage</h2>
+                        <p class="text-xl text-slate-600">Cut out the middlemen. Get premium quality at factory-direct pricing to maximize your retail margins instantly.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                <i class="ph-fill ph-factory text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Bulk Manufacturing</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">High-capacity production facility in Karol Bagh capable of fulfilling large volume orders rapidly.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                <i class="ph-fill ph-scissors text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Export Quality</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Premium fabrics, double-stitched seams, and flawless finishing meeting international standards.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                <i class="ph-fill ph-tag text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Custom Branding</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Get your own brand labels, tags, and custom packaging. We manufacture, you build your brand.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                <i class="ph-fill ph-truck text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Fast Delivery</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Reliable logistics network ensuring safe and timely delivery to any retail location across Pan India.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16 text-center">
+                        <button onclick="switchView('view-process')" class="text-brand-600 font-bold hover:text-brand-800 transition-colors inline-flex items-center text-lg">
+                            See how our process works <i class="ph-bold ph-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE: COLLECTION ================= -->
+        <div id="view-collection" class="page-view animate-fade-in bg-white min-h-screen">
+            <section class="py-20 lg:py-28">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-slate-100 pb-8">
+                        <div class="max-w-3xl">
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Our Premium Catalog</h1>
+                            <p class="text-xl text-slate-600">High-demand styles engineered for fast retail sell-through. Available in complete size sets (S to XXL).</p>
+                        </div>
+                        <button onclick="switchView('view-contact')" class="mt-6 md:mt-0 inline-flex items-center text-brand-600 font-bold hover:text-brand-800 transition-colors bg-brand-50 px-6 py-3 rounded-full">
+                            Request Full Catalog PDF <i class="ph-bold ph-download-simple ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Enhanced Masonry-style Grid -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        
+                        <!-- Product Card Template -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Formal Cotton Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute top-8 left-8 bg-white/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-slate-900 shadow-lg border border-slate-100">
+                                    🔥 Best Seller
+                                </div>
+                                <!-- Hover Overlay -->
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Premium Formal Cottons</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Crisp, breathable 100% cotton formal wear perfect for corporate retail. Wrinkle-resistant finish with premium collar fusing.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casual Printed Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute top-8 left-8 bg-brand-600/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-white shadow-lg border border-brand-500">
+                                    ⭐ Export Quality
+                                </div>
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Casual Printed Series</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Vibrant prints on soft rayon and cotton blends. High demand for modern youth segment and holiday collections.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solid Linen Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Pure Linen Solids</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">High-end pure linen shirts with elegant texture. Perfect for premium retail boutiques catering to sophisticated clients.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 100 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Checkered Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Classic Checks Collection</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Evergreen checkered patterns in twill and flannel. A must-have staple for any menswear store.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Club Wear Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute top-8 left-8 bg-slate-900/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-white shadow-lg">
+                                    ✨ Trending Now
+                                </div>
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Satin Club Wear</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Luxurious satin finish shirts with slim fit tailoring. Designed for evening and party wear. High margin product.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
+                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
+                                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Denim Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
+                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Premium Denim Shirts</h3>
+                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Bio-washed denim shirts with rugged durability and premium snap buttons. Double stitched for longevity.</p>
+                                </div>
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 80 Pcs</span>
+                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="mt-16 text-center">
+                        <button onclick="switchView('view-contact')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-slate-900 rounded-full hover:bg-brand-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                            Don't see what you need? Ask for custom order
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE: PROCESS & TRUST ================= -->
+        <div id="view-process" class="page-view animate-fade-in bg-slate-50 min-h-screen">
+            
+            <!-- Trust Stats Section -->
+            <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30"></div>
+                <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-16">Manufacturing Excellence by the Numbers</h2>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-x divide-slate-800">
+                        <div>
+                            <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">5<span class="text-brand-500">+</span></p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">100<span class="text-brand-500">+</span></p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">B2B Clients</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600 mb-4">10k<span class="text-brand-500">+</span></p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">Shirts Delivered</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">29</p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">States Served</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Timeline -->
+            <section class="py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Streamlined Ordering Process</h2>
+                        <p class="text-xl text-slate-600">From inquiry to delivery, we make bulk sourcing completely transparent and hassle-free.</p>
+                    </div>
+
+                    <div class="relative max-w-5xl mx-auto">
+                        <!-- Connecting Line -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-slate-200 via-brand-200 to-slate-200 -translate-y-1/2 z-0 rounded-full"></div>
+
+                        <div class="grid md:grid-cols-4 gap-12 md:gap-6 relative z-10">
+                            <!-- Step 1 -->
+                            <div class="text-center group">
+                                <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 relative transition-all duration-300">
+                                    <i class="ph-fill ph-hand-tap"></i>
+                                    <div class="absolute -right-2 top-0 w-5 h-5 bg-brand-500 rounded-full animate-ping opacity-75 hidden group-hover:block"></div>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">1. Select Styles</h3>
+                                <p class="text-base text-slate-600">Choose from our catalog or share your custom technical sheets.</p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="text-center group">
+                                <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 transition-all duration-300">
+                                    <i class="ph-fill ph-chat-text"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">2. Request Quote</h3>
+                                <p class="text-base text-slate-600">Fill our inquiry form to get factory-direct B2B pricing immediately.</p>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="text-center group">
+                                <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 transition-all duration-300">
+                                    <i class="ph-fill ph-package"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">3. Sample Check</h3>
+                                <p class="text-base text-slate-600">We dispatch physical samples to your location for quality assurance.</p>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="text-center group">
+                                <div class="w-20 h-20 mx-auto bg-brand-600 border-4 border-brand-100 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-xl mb-6 shadow-glow transform group-hover:scale-110 transition-all duration-300">
+                                    <i class="ph-bold ph-truck"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">4. Fast Delivery</h3>
+                                <p class="text-base text-slate-600">Production starts. Secure dispatch directly to your retail hub.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="py-24 bg-white border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-16 text-center tracking-tight">What Retailers Say</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 relative hover:shadow-card-hover transition-shadow duration-300">
+                            <i class="ph-fill ph-quotes text-6xl text-brand-100 absolute top-6 left-6"></i>
+                            <div class="relative z-10 pt-4">
+                                <div class="flex text-amber-400 mb-6 text-lg">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                </div>
+                                <p class="text-slate-700 mb-8 text-lg font-medium leading-relaxed">"Switched to Delhi Shirts Co. last year for our 3 retail outlets. The stitching quality is on par with top brands, and our margins have improved by 25%."</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-brand-400 to-brand-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">R</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 text-base">Rahul Verma</h4>
+                                        <p class="text-sm text-slate-500">Retail Owner, Mumbai</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 relative hover:shadow-card-hover transition-shadow duration-300">
+                            <i class="ph-fill ph-quotes text-6xl text-blue-100 absolute top-6 left-6"></i>
+                            <div class="relative z-10 pt-4">
+                                <div class="flex text-amber-400 mb-6 text-lg">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                </div>
+                                <p class="text-slate-700 mb-8 text-lg font-medium leading-relaxed">"Very professional setup in Karol Bagh. They handled my custom branding requirement seamlessly. Delivery to Bangalore was faster than expected."</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">A</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 text-base">Amit Jain</h4>
+                                        <p class="text-sm text-slate-500">Wholesaler, Bangalore</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 relative hover:shadow-card-hover transition-shadow duration-300">
+                            <i class="ph-fill ph-quotes text-6xl text-purple-100 absolute top-6 left-6"></i>
+                            <div class="relative z-10 pt-4">
+                                <div class="flex text-amber-400 mb-6 text-lg">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                                </div>
+                                <p class="text-slate-700 mb-8 text-lg font-medium leading-relaxed">"The linen collection is our best seller. Shrinkage is zero and color fastness is perfect. Highly recommend them for premium menswear sourcing."</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">S</div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 text-base">Suresh Reddy</h4>
+                                        <p class="text-sm text-slate-500">Boutique Owner, Hyderabad</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE: CONTACT (INQUIRY) ================= -->
+        <div id="view-contact" class="page-view animate-fade-in bg-white min-h-screen pt-10">
+            <section class="py-12 bg-white relative overflow-hidden">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Let's Build Your Inventory</h1>
+                        <p class="text-xl text-slate-600">Get a custom quote within 2 hours. Factory direct pricing guaranteed.</p>
+                    </div>
+
+                    <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-100">
+                        
+                        <!-- Left: Copy & Value Prop -->
+                        <div class="bg-slate-900 text-white p-10 lg:p-16 lg:w-5/12 flex flex-col justify-center relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-80 h-80 bg-brand-500 rounded-full filter blur-[120px] opacity-30"></div>
+                            <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500 rounded-full filter blur-[120px] opacity-20"></div>
+                            
+                            <div class="relative z-10">
+                                <span class="inline-flex items-center py-1.5 px-4 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold tracking-widest uppercase mb-8 border border-brand-500/30">
+                                    <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
+                                    Fast Response Guaranteed
+                                </span>
+                                <h2 class="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight">Ready to boost your margins?</h2>
+                                <p class="text-slate-300 mb-10 text-lg leading-relaxed">
+                                    Skip the middlemen. Tell us what you need, and our sales team will send a custom quotation with catalog PDFs immediately.
+                                </p>
+                                
+                                <ul class="space-y-6 mb-12">
+                                    <li class="flex items-start text-slate-200 text-lg">
+                                        <div class="bg-brand-500/20 p-1 rounded-full mr-4 mt-1">
+                                            <i class="ph-bold ph-check text-brand-400 text-xl"></i>
+                                        </div>
+                                        Lowest B2B Pricing Guaranteed
+                                    </li>
+                                    <li class="flex items-start text-slate-200 text-lg">
+                                        <div class="bg-brand-500/20 p-1 rounded-full mr-4 mt-1">
+                                            <i class="ph-bold ph-check text-brand-400 text-xl"></i>
+                                        </div>
+                                        Custom Branding & Tagging
+                                    </li>
+                                    <li class="flex items-start text-slate-200 text-lg">
+                                        <div class="bg-brand-500/20 p-1 rounded-full mr-4 mt-1">
+                                            <i class="ph-bold ph-check text-brand-400 text-xl"></i>
+                                        </div>
+                                        Pan India Secure Shipping
+                                    </li>
+                                </ul>
+
+                                <div class="mt-auto border-t border-slate-800 pt-8 flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
+                                        <i class="ph-fill ph-map-pin text-brand-400 text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Factory Location</p>
+                                        <p class="text-lg font-bold text-white mt-1">Karol Bagh, New Delhi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Form -->
+                        <div class="p-10 lg:p-16 lg:w-7/12 bg-slate-50 lg:bg-white relative">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-8">Request Wholesale Pricing</h3>
+                            <form id="inquiryForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Name -->
+                                    <div>
+                                        <label for="name" class="block text-sm font-bold text-slate-700 mb-2">Full Name / Business Name <span class="text-red-500">*</span></label>
+                                        <input type="text" id="name" required class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-white shadow-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-base font-medium placeholder-slate-400" placeholder="e.g. Rahul Clothing Co.">
+                                    </div>
+                                    <!-- Phone -->
+                                    <div>
+                                        <label for="phone" class="block text-sm font-bold text-slate-700 mb-2">Phone / WhatsApp <span class="text-red-500">*</span></label>
+                                        <input type="tel" id="phone" required class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-white shadow-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-base font-medium placeholder-slate-400" placeholder="+91 00000 00000">
+                                    </div>
+                                </div>
+
+                                <!-- Product Interest -->
+                                <div>
+                                    <label for="product" class="block text-sm font-bold text-slate-700 mb-2">Product Interest <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <select id="product" required class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-white shadow-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all appearance-none cursor-pointer text-base font-medium">
+                                            <option value="" disabled selected>Select category...</option>
+                                            <option value="Formal Shirts">Formal Cotton Shirts</option>
+                                            <option value="Casual Printed">Casual Printed Shirts</option>
+                                            <option value="Linen">Pure Linen Shirts</option>
+                                            <option value="Checks">Checkered Shirts</option>
+                                            <option value="Club Wear">Club Wear / Satin</option>
+                                            <option value="Denim">Denim Shirts</option>
+                                            <option value="Mix/Custom">Mixed Catalog / Custom Requirement</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-slate-500">
+                                            <i class="ph-bold ph-caret-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quantity -->
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-3">Estimated Quantity <span class="text-slate-400 font-medium ml-1">(MOQ: 50)</span></label>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="qty" value="50-100" class="peer sr-only" checked>
+                                            <div class="text-center px-3 py-4 bg-white border-2 border-slate-100 rounded-xl text-base font-bold text-slate-500 peer-checked:bg-brand-50 peer-checked:border-brand-500 peer-checked:text-brand-700 hover:border-brand-200 transition-all shadow-sm">50-100</div>
+                                        </label>
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="qty" value="100-300" class="peer sr-only">
+                                            <div class="text-center px-3 py-4 bg-white border-2 border-slate-100 rounded-xl text-base font-bold text-slate-500 peer-checked:bg-brand-50 peer-checked:border-brand-500 peer-checked:text-brand-700 hover:border-brand-200 transition-all shadow-sm">100-300</div>
+                                        </label>
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="qty" value="300-1000" class="peer sr-only">
+                                            <div class="text-center px-3 py-4 bg-white border-2 border-slate-100 rounded-xl text-base font-bold text-slate-500 peer-checked:bg-brand-50 peer-checked:border-brand-500 peer-checked:text-brand-700 hover:border-brand-200 transition-all shadow-sm">300-1k</div>
+                                        </label>
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="qty" value="1000+" class="peer sr-only">
+                                            <div class="text-center px-3 py-4 bg-white border-2 border-slate-100 rounded-xl text-base font-bold text-slate-500 peer-checked:bg-brand-50 peer-checked:border-brand-500 peer-checked:text-brand-700 hover:border-brand-200 transition-all shadow-sm">1k+</div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit CTA -->
+                                <button type="submit" class="btn-shine w-full mt-4 py-5 px-6 text-white font-extrabold text-lg rounded-xl hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-500/30 transition-all duration-300 flex justify-center items-center group shadow-lg">
+                                    Get Best Wholesale Price
+                                    <i class="ph-bold ph-paper-plane-tilt ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform text-xl"></i>
+                                </button>
+                                
+                                <p class="text-center text-sm text-slate-500 font-medium flex items-center justify-center mt-6">
+                                    <i class="ph-fill ph-lock-key text-brand-500 text-lg mr-2"></i> 100% Secure. We never share your data.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <span class="text-2xl font-bold tracking-tighter text-slate-900 mb-4 block">
+                        Delhi<span class="text-brand-600">Shirts</span>Co.
+                    </span>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                        Premium B2B shirt manufacturing unit providing factory-direct pricing to retailers, wholesalers, and exporters across India.
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4 tracking-wide">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><button onclick="switchView('view-home')" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition-colors">Home Page</button></li>
+                        <li><button onclick="switchView('view-collection')" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition-colors">Our Collection</button></li>
+                        <li><button onclick="switchView('view-process')" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition-colors">How to Order</button></li>
+                        <li><button onclick="switchView('view-contact')" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition-colors">Request Quote</button></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4 tracking-wide">Contact Factory</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="ph-fill ph-map-pin text-brand-500 mt-1 mr-3 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-600">Block 4, Karol Bagh Industrial Area,<br>New Delhi, 110005, India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ph-fill ph-phone text-brand-500 mr-3 text-lg"></i>
+                            <span class="text-sm font-bold text-slate-700">+91 98XXX XXXXX</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ph-fill ph-envelope text-brand-500 mr-3 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-600">sales@delhishirtsco.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Timing -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4 tracking-wide">Business Hours</h4>
+                    <ul class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <li class="flex justify-between text-sm text-slate-600">
+                            <span>Mon - Sat:</span>
+                            <span class="font-bold text-slate-900">9:00 AM - 8:00 PM</span>
+                        </li>
+                        <li class="flex justify-between text-sm text-slate-600 border-t border-slate-200 pt-2 mt-2">
+                            <span>Sunday:</span>
+                            <span class="font-bold text-red-500">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm font-medium text-slate-400">
+                    &copy; 2026 Delhi Shirts Co. All rights reserved. B2B Enquiries Only.
+                </p>
+                <div class="flex space-x-6 text-slate-400">
+                    <a href="#" class="hover:text-brand-600 transform hover:scale-110 transition-all"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+                    <a href="#" class="hover:text-brand-600 transform hover:scale-110 transition-all"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+                    <a href="#" class="hover:text-brand-600 transform hover:scale-110 transition-all"><i class="ph-fill ph-linkedin-logo text-2xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919800000000?text=Hi,%20I%20want%20to%20place%20a%20bulk%20order%20for%20shirts." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex items-center justify-center group">
+        <span class="absolute right-full mr-4 bg-white text-slate-800 text-sm font-bold py-3 px-5 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap hidden md:block border border-slate-100">
+            Chat on WhatsApp
+        </span>
+        <i class="ph-fill ph-whatsapp-logo text-4xl"></i>
+        <!-- Ping effect -->
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. PRELOADER ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }, 800); // slight delay to show the animation
+        });
+
+        // --- 2. MULTIPAGE (SPA) ROUTING LOGIC ---
+        function switchView(viewId) {
+            // Hide all views
+            document.querySelectorAll('.page-view').forEach(el => {
+                el.classList.remove('active');
+                // Force reflow to restart animations
+                void el.offsetWidth; 
+            });
+
+            // Show target view
+            const target = document.getElementById(viewId);
+            if(target) {
+                target.classList.add('active');
+            }
+
+            // Update Desktop Nav Active States
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.dataset.target === viewId) {
+                    link.classList.remove('text-slate-600');
+                    link.classList.add('text-brand-600');
+                } else {
+                    link.classList.remove('text-brand-600');
+                    link.classList.add('text-slate-600');
+                }
+            });
+
+            // Update Mobile Nav Active States
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                if(link.dataset.target === viewId) {
+                    link.classList.add('text-brand-600', 'bg-brand-50');
+                    link.classList.remove('text-slate-700', 'hover:bg-slate-50');
+                } else {
+                    link.classList.remove('text-brand-600', 'bg-brand-50');
+                    link.classList.add('text-slate-700', 'hover:bg-slate-50');
+                }
+            });
+
+            // Close mobile menu if open
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.querySelector('#mobile-menu-btn i');
+            if(!menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+            }
+
+            // Scroll to top of the page smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 3. UI INTERACTIONS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = btn.querySelector('i');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if(menu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('ph-x');
+                    menuIcon.classList.add('ph-list');
+                } else {
+                    menuIcon.classList.remove('ph-list');
+                    menuIcon.classList.add('ph-x');
+                }
+            });
+
+            // Form Submission Simulation
+            const form = document.getElementById('inquiryForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                
+                // Loading state
+                btn.innerHTML = '<i class="ph ph-spinner animate-spin text-2xl mr-3"></i> Sending...';
+                btn.classList.add('opacity-80', 'cursor-not-allowed', 'pointer-events-none');
+                btn.classList.remove('btn-shine');
+                
+                // Simulate API call
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="ph-bold ph-check-circle text-2xl mr-3"></i> Request Sent Successfully!';
+                    btn.classList.remove('bg-slate-900', 'hover:bg-brand-600');
+                    btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                    form.reset();
+                    
+                    // Reset button after 4 seconds
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.add('btn-shine');
+                        btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'opacity-80', 'cursor-not-allowed', 'pointer-events-none');
+                    }, 4000);
+                }, 1500);
+            });
+            
+            // Navbar glassmorphism change on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.replace('bg-white/75', 'bg-white/95');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.replace('bg-white/95', 'bg-white/75');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
