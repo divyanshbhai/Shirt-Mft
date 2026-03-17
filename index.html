@@ -83,7 +83,7 @@
         }
         
         .glass-nav {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -105,7 +105,7 @@
             background-position: right center;
         }
 
-        /* Hide scrollbar for marquee */
+        /* Hide scrollbar for marquee and filters */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -124,6 +124,18 @@
         
         #preloader {
             transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        /* Collection Grid Filter Transitions */
+        .product-card {
+            transition: all 0.4s ease-out;
+            transform: scale(1);
+            opacity: 1;
+        }
+        .product-card.hidden-item {
+            transform: scale(0.9);
+            opacity: 0;
+            display: none;
         }
     </style>
 </head>
@@ -155,7 +167,7 @@
                     <button onclick="switchView('view-home')" class="nav-link text-sm font-semibold text-brand-600 hover:text-brand-600 transition-colors" data-target="view-home">Home</button>
                     <button onclick="switchView('view-collection')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-collection">Collection</button>
                     <button onclick="switchView('view-process')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-process">Process & Trust</button>
-                    <button onclick="switchView('view-contact')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-contact">Contact</button>
+                    <button onclick="switchView('view-contact')" class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors" data-target="view-contact">Contact Us</button>
                     <button onclick="switchView('view-contact')" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
                         Get Bulk Price
                     </button>
@@ -175,7 +187,8 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <button onclick="switchView('view-home')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-brand-600 bg-brand-50 rounded-xl" data-target="view-home">Home</button>
                 <button onclick="switchView('view-collection')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-collection">Collection</button>
-                <button onclick="switchView('view-process')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-process">Process</button>
+                <button onclick="switchView('view-process')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-process">Process & Trust</button>
+                <button onclick="switchView('view-contact')" class="mobile-nav-link w-full text-left block px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl" data-target="view-contact">Contact Us</button>
                 <button onclick="switchView('view-contact')" class="w-full mt-4 block px-4 py-4 text-base font-bold text-white bg-slate-900 rounded-xl text-center shadow-lg">Get Bulk Price</button>
             </div>
         </div>
@@ -186,7 +199,8 @@
 
         <!-- ================= PAGE: HOME ================= -->
         <div id="view-home" class="page-view active animate-fade-in bg-mesh min-h-screen">
-            <!-- Hero Section -->
+            
+            <!-- Section 1: Hero Section -->
             <section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
                 <div class="absolute top-0 -left-4 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
                 <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" style="animation-delay: 2s;"></div>
@@ -218,7 +232,7 @@
                                     <i class="ph-bold ph-arrow-right ml-2 text-xl"></i>
                                 </button>
                                 <button onclick="switchView('view-collection')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 bg-white border-2 border-slate-100 rounded-full hover:bg-slate-50 hover:border-slate-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 group">
-                                    View Collection
+                                    View Full Catalog
                                     <i class="ph-bold ph-storefront ml-2 text-xl text-slate-400 group-hover:text-brand-600 transition-colors"></i>
                                 </button>
                             </div>
@@ -237,7 +251,7 @@
                             </div>
                         </div>
 
-                        <!-- Right Image Grid (Modern overlapping layout) -->
+                        <!-- Right Image Grid -->
                         <div class="relative lg:ml-auto h-[600px] w-full hidden md:block">
                             <!-- Main Image -->
                             <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Folded Shirts" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-[2rem] shadow-2xl z-10 animate-float border-4 border-white">
@@ -259,7 +273,7 @@
                 </div>
             </section>
 
-            <!-- Dynamic Logo Marquee -->
+            <!-- Section 2: Dynamic Logo Marquee -->
             <section class="py-12 bg-white border-y border-slate-100 overflow-hidden relative">
                 <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
                 <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
@@ -268,13 +282,11 @@
                 
                 <div class="flex overflow-hidden no-scrollbar w-full">
                     <div class="flex space-x-16 items-center animate-marquee whitespace-nowrap opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                        <!-- Repeated logos for infinite effect -->
                         <span class="text-2xl font-bold font-serif mx-8">STYLE<span class="text-slate-400">MART</span></span>
                         <span class="text-2xl font-black tracking-tighter mx-8">URBAN<span class="font-light">MENS</span></span>
                         <span class="text-2xl font-bold italic mx-8">Trend<span class="not-italic text-slate-400">Setters</span></span>
                         <span class="text-2xl font-bold tracking-widest mx-8">VOGUE<span class="text-slate-400">INDIA</span></span>
                         <span class="text-2xl font-semibold mx-8">The<span class="font-bold">Apparel</span>Co.</span>
-                        <!-- Duplicate -->
                         <span class="text-2xl font-bold font-serif mx-8">STYLE<span class="text-slate-400">MART</span></span>
                         <span class="text-2xl font-black tracking-tighter mx-8">URBAN<span class="font-light">MENS</span></span>
                         <span class="text-2xl font-bold italic mx-8">Trend<span class="not-italic text-slate-400">Setters</span></span>
@@ -284,8 +296,56 @@
                 </div>
             </section>
 
-            <!-- Why Choose Us -->
-            <section class="py-24 bg-slate-50 relative">
+            <!-- Section 3: Featured Categories (NEW) -->
+            <section class="py-24 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Explore Categories</h2>
+                            <p class="text-xl text-slate-600">High-demand styles engineered for fast retail sell-through.</p>
+                        </div>
+                        <button onclick="switchView('view-collection')" class="hidden md:inline-flex items-center font-bold text-brand-600 hover:text-brand-800 transition-colors group">
+                            View All 500+ Styles <i class="ph-bold ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Category 1 -->
+                        <div onclick="switchView('view-collection'); setTimeout(()=>filterCategory('formal'), 100);" class="relative h-96 rounded-3xl overflow-hidden group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Formal Wear" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-8">
+                                <h3 class="text-3xl font-bold text-white mb-2">Formal Cottons</h3>
+                                <p class="text-slate-300 mb-4 font-medium">Crisp, corporate staples.</p>
+                                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-bold border border-white/30">View 120+ Styles</span>
+                            </div>
+                        </div>
+                        <!-- Category 2 -->
+                        <div onclick="switchView('view-collection'); setTimeout(()=>filterCategory('casual'), 100);" class="relative h-96 rounded-3xl overflow-hidden group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casual Prints" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-8">
+                                <h3 class="text-3xl font-bold text-white mb-2">Casual Prints</h3>
+                                <p class="text-slate-300 mb-4 font-medium">Vibrant modern patterns.</p>
+                                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-bold border border-white/30">View 200+ Styles</span>
+                            </div>
+                        </div>
+                        <!-- Category 3 -->
+                        <div onclick="switchView('view-collection'); setTimeout(()=>filterCategory('linen'), 100);" class="relative h-96 rounded-3xl overflow-hidden group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pure Linen" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-8">
+                                <h3 class="text-3xl font-bold text-white mb-2">Pure Linen</h3>
+                                <p class="text-slate-300 mb-4 font-medium">Premium boutique selection.</p>
+                                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-bold border border-white/30">View 80+ Styles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Why Choose Us -->
+            <section class="py-24 bg-white relative">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">The Factory Advantage</h2>
@@ -293,202 +353,274 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
-                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                        <div class="bg-slate-50 p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors shadow-sm">
                                 <i class="ph-fill ph-factory text-3xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Bulk Manufacturing</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">High-capacity production facility in Karol Bagh capable of fulfilling large volume orders rapidly.</p>
                         </div>
-
-                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
-                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                        <div class="bg-slate-50 p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors shadow-sm">
                                 <i class="ph-fill ph-scissors text-3xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Export Quality</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">Premium fabrics, double-stitched seams, and flawless finishing meeting international standards.</p>
                         </div>
-
-                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
-                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                        <div class="bg-slate-50 p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors shadow-sm">
                                 <i class="ph-fill ph-tag text-3xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Custom Branding</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">Get your own brand labels, tags, and custom packaging. We manufacture, you build your brand.</p>
                         </div>
-
-                        <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
-                            <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                        <div class="bg-slate-50 p-8 rounded-3xl shadow-soft border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-slate-600 mb-6 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors shadow-sm">
                                 <i class="ph-fill ph-truck text-3xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3">Fast Delivery</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">Reliable logistics network ensuring safe and timely delivery to any retail location across Pan India.</p>
                         </div>
                     </div>
-                    
-                    <div class="mt-16 text-center">
-                        <button onclick="switchView('view-process')" class="text-brand-600 font-bold hover:text-brand-800 transition-colors inline-flex items-center text-lg">
-                            See how our process works <i class="ph-bold ph-arrow-right ml-2"></i>
-                        </button>
+                </div>
+            </section>
+
+            <!-- Section 5: B2B Perks (NEW) -->
+            <section class="py-20 bg-slate-900 text-white border-y border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span class="text-brand-400 font-bold tracking-widest uppercase text-sm mb-4 block">B2B Partner Benefits</span>
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">We empower retailers to scale profitably.</h2>
+                            <p class="text-lg text-slate-400 mb-8 leading-relaxed">Partnering with Delhi Shirts Co. gives you more than just inventory. We provide the infrastructure and pricing you need to dominate your local market.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400 mr-4 shrink-0">
+                                        <i class="ph-fill ph-chart-line-up text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold mb-1">Unbeatable Profit Margins</h4>
+                                        <p class="text-slate-400 text-sm">Direct factory pricing means you can markup up to 300% without losing competitiveness.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4 shrink-0">
+                                        <i class="ph-fill ph-handshake text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold mb-1">Dedicated Account Manager</h4>
+                                        <p class="text-slate-400 text-sm">One point of contact for all your sourcing, tracking, and customized production needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-brand-500 rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="B2B Meeting" class="relative rounded-3xl shadow-2xl object-cover h-[450px] w-full border border-slate-700">
+                        </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Home CTA (NEW) -->
+            <section class="py-24 bg-brand-50 text-center">
+                <div class="max-w-4xl mx-auto px-4">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Want to check our fabric quality first?</h2>
+                    <p class="text-xl text-slate-600 mb-10">Request a physical sample kit containing our top-selling fabrics, stitch quality examples, and color swatches.</p>
+                    <button onclick="switchView('view-contact')" class="btn-shine inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        Request Sample Kit
+                        <i class="ph-bold ph-package ml-3 text-2xl"></i>
+                    </button>
                 </div>
             </section>
         </div>
 
-        <!-- ================= PAGE: COLLECTION ================= -->
-        <div id="view-collection" class="page-view animate-fade-in bg-white min-h-screen">
-            <section class="py-20 lg:py-28">
+        <!-- ================= PAGE: COLLECTION (MASSIVE CATALOG) ================= -->
+        <div id="view-collection" class="page-view animate-fade-in bg-slate-50 min-h-screen">
+            
+            <!-- Section 1: Header -->
+            <section class="bg-white py-16 border-b border-slate-200">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-slate-100 pb-8">
-                        <div class="max-w-3xl">
-                            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Our Premium Catalog</h1>
-                            <p class="text-xl text-slate-600">High-demand styles engineered for fast retail sell-through. Available in complete size sets (S to XXL).</p>
-                        </div>
-                        <button onclick="switchView('view-contact')" class="mt-6 md:mt-0 inline-flex items-center text-brand-600 font-bold hover:text-brand-800 transition-colors bg-brand-50 px-6 py-3 rounded-full">
-                            Request Full Catalog PDF <i class="ph-bold ph-download-simple ml-2"></i>
-                        </button>
+                    <div class="text-center max-w-3xl mx-auto">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-bold tracking-widest uppercase mb-4">Complete Catalog 2026</span>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Wholesale Collection</h1>
+                        <p class="text-xl text-slate-600">Browse our high-demand styles. All products are available in complete size sets (S to XXL). <strong class="text-slate-900">MOQ: 50 Pieces / Style.</strong></p>
                     </div>
+                </div>
+            </section>
 
-                    <!-- Enhanced Masonry-style Grid -->
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Section 2: Filter Tabs -->
+            <section class="py-6 bg-white sticky top-20 z-40 shadow-sm border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex overflow-x-auto no-scrollbar space-x-2 md:justify-center pb-2">
+                        <button onclick="filterCategory('all')" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-bold bg-slate-900 text-white transition-colors whitespace-nowrap" data-filter="all">All Styles</button>
+                        <button onclick="filterCategory('formal')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors whitespace-nowrap" data-filter="formal">Formal</button>
+                        <button onclick="filterCategory('casual')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors whitespace-nowrap" data-filter="casual">Casual Prints</button>
+                        <button onclick="filterCategory('linen')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors whitespace-nowrap" data-filter="linen">Pure Linen</button>
+                        <button onclick="filterCategory('club')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors whitespace-nowrap" data-filter="club">Club Wear</button>
+                        <button onclick="filterCategory('denim')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors whitespace-nowrap" data-filter="denim">Denim</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Massive Product Grid (24 Items) -->
+            <section class="py-16">
+                <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="productGrid">
                         
-                        <!-- Product Card Template -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Formal Cotton Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute top-8 left-8 bg-white/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-slate-900 shadow-lg border border-slate-100">
-                                    🔥 Best Seller
-                                </div>
-                                <!-- Hover Overlay -->
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Premium Formal Cottons</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Crisp, breathable 100% cotton formal wear perfect for corporate retail. Wrinkle-resistant finish with premium collar fusing.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <!-- Formal 1-4 -->
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="formal" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute top-4 left-4 bg-brand-600 text-xs font-bold px-3 py-1 rounded-full text-white">Best Seller</div></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Classic White Oxford</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Crisp 100% cotton formal wear.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="formal" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1624405391629-87a329f6b986?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Sky Blue Corporate Twill</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Wrinkle-resistant premium twill.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="formal" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Charcoal Executive Fit</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Dark formal wear for evening meetings.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="formal" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1620012253295-c15bc3a61ce6?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Mint Green Formal Blend</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Poly-cotton blend for durability.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 100</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
 
-                        <!-- Product 2 -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casual Printed Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute top-8 left-8 bg-brand-600/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-white shadow-lg border border-brand-500">
-                                    ⭐ Export Quality
-                                </div>
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Casual Printed Series</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Vibrant prints on soft rayon and cotton blends. High demand for modern youth segment and holiday collections.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <!-- Casual 1-6 -->
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute top-4 left-4 bg-slate-900 text-xs font-bold px-3 py-1 rounded-full text-white">Trending</div></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Tropical Rayon Print</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Soft rayon with beach vibes.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Vintage Flannel Check</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Heavyweight cotton for winter.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 80</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Micro-check Everyday Wear</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Versatile casual piece.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Abstract Art Print</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Unique digital prints for youth segment.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1608243811802-53b75123fc02?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Oversized Streetwear Drop</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Drop-shoulder modern fit.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 100</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="casual" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1599404286663-7186a8779b69?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Striped Resort Collar</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Cuban collar vacation shirt.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
 
-                        <!-- Product 3 -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solid Linen Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Pure Linen Solids</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">High-end pure linen shirts with elegant texture. Perfect for premium retail boutiques catering to sophisticated clients.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 100 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <!-- Linen 1-4 -->
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="linen" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute top-4 left-4 bg-amber-500 text-xs font-bold px-3 py-1 rounded-full text-white">Premium</div></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Natural Pure Linen</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Breathable fabric for luxury stores.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 100</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="linen" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Olive Green Linen Blend</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Linen-cotton mix for less wrinkling.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="linen" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1582800366471-f9b4c09d5718?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Navy Blue Summer Linen</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Deep dyed luxury fabric.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="linen" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1585408665796-01584c3ea0e7?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Pastel Pink Linen</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Soft hues for spring collections.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 100</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
 
-                        <!-- Product 4 -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Checkered Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Classic Checks Collection</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Evergreen checkered patterns in twill and flannel. A must-have staple for any menswear store.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <!-- Club Wear 1-3 -->
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="club" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute top-4 left-4 bg-purple-600 text-xs font-bold px-3 py-1 rounded-full text-white">High Margin</div></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Midnight Black Satin</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Shiny finish for party wear.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="club" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1615467389279-d56fb330eef7?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Maroon Velvet Touch</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Rich texture for winter clubs.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="club" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1596423735880-5f2a689b903e?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Silver Metallic Print</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Foil printed cotton blend.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 50</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
 
-                        <!-- Product 5 -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Club Wear Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute top-8 left-8 bg-slate-900/95 backdrop-blur text-xs font-bold px-4 py-2 rounded-full text-white shadow-lg">
-                                    ✨ Trending Now
-                                </div>
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Satin Club Wear</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Luxurious satin finish shirts with slim fit tailoring. Designed for evening and party wear. High margin product.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 50 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <!-- Denim 1-3 -->
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="denim" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"><div class="absolute top-4 left-4 bg-blue-600 text-xs font-bold px-3 py-1 rounded-full text-white">Export Quality</div></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Light Wash Bio-Denim</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Softened denim with pearl snaps.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 80</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
-
-                        <!-- Product 6 -->
-                        <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 hover:shadow-card-hover transition-all duration-500 cursor-pointer flex flex-col" onclick="switchView('view-contact')">
-                            <div class="relative h-[350px] overflow-hidden bg-slate-100 p-4">
-                                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Denim Shirts" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 shadow-sm">
-                                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="bg-white text-slate-900 font-bold px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick Quote</span>
-                                </div>
-                            </div>
-                            <div class="p-8 flex-grow flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Premium Denim Shirts</h3>
-                                    <p class="text-base text-slate-500 mb-6 leading-relaxed">Bio-washed denim shirts with rugged durability and premium snap buttons. Double stitched for longevity.</p>
-                                </div>
-                                <div class="flex items-center justify-between border-t border-slate-100 pt-5">
-                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-md">MOQ: 80 Pcs</span>
-                                    <span class="text-base font-bold text-brand-600 flex items-center">Get Pricing <i class="ph-bold ph-caret-right ml-1"></i></span>
-                                </div>
-                            </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="denim" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1578932750294-f5075e85f44a?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Raw Indigo Overshirt</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Heavyweight unwashed denim style.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 80</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
+                        </div>
+                        <div class="product-card group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer" data-category="denim" onclick="switchView('view-contact')">
+                            <div class="relative h-72 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1604135540306-03c7ea32958d?ixlib=rb-4.0.3&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"></div>
+                            <div class="p-6 flex-grow flex flex-col"><h3 class="text-lg font-bold text-slate-900 mb-2">Black Acid Wash</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">Edgy urban denim collection.</p><div class="mt-auto flex justify-between items-center pt-4 border-t border-slate-100"><span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">MOQ: 100</span><span class="text-brand-600 font-bold text-sm">Get Price</span></div></div>
                         </div>
 
                     </div>
                     
-                    <div class="mt-16 text-center">
-                        <button onclick="switchView('view-contact')" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-slate-900 rounded-full hover:bg-brand-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                            Don't see what you need? Ask for custom order
+                    <!-- Load More Simulator -->
+                    <div class="mt-20 text-center border-t border-slate-200 pt-16 relative">
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-50 px-4 text-sm font-bold text-slate-400">Showing 16 of 542 Styles</div>
+                        <button onclick="switchView('view-contact')" class="inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-slate-700 bg-white border-2 border-slate-200 rounded-full hover:bg-slate-50 hover:border-brand-500 hover:text-brand-600 transition-all duration-300 shadow-sm group">
+                            Request Complete Catalog PDF 
+                            <i class="ph-bold ph-download-simple ml-3 text-xl group-hover:animate-bounce"></i>
                         </button>
+                        <p class="mt-4 text-sm text-slate-500">PDF includes pricing sheets, exact measurements, and fabric details.</p>
                     </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Bulk Pricing & Tiers (NEW) -->
+            <section class="py-24 bg-white border-y border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Transparent Volume Pricing</h2>
+                        <p class="text-lg text-slate-600">The more you order, the more you save. Below is an estimated cost reduction tier. Exact prices depend on fabric choice.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-4 gap-6 text-center">
+                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                            <h3 class="text-lg font-bold text-slate-500 mb-2">Trial Order</h3>
+                            <div class="text-4xl font-extrabold text-slate-900 mb-2">50<span class="text-xl text-slate-500 font-medium"> pcs</span></div>
+                            <p class="text-sm text-slate-600 mb-4">Base Factory Price</p>
+                            <span class="text-brand-600 font-bold text-sm">Standard Rate</span>
+                        </div>
+                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                            <h3 class="text-lg font-bold text-slate-500 mb-2">Retail Restock</h3>
+                            <div class="text-4xl font-extrabold text-slate-900 mb-2">200<span class="text-xl text-slate-500 font-medium"> pcs</span></div>
+                            <p class="text-sm text-slate-600 mb-4">Perfect for multiple outlets</p>
+                            <span class="text-brand-600 font-bold text-sm">Up to 8% Discount</span>
+                        </div>
+                        <div class="p-8 rounded-3xl bg-brand-50 border-2 border-brand-200 relative transform md:-translate-y-4 shadow-xl">
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
+                            <h3 class="text-lg font-bold text-brand-700 mb-2">Wholesaler</h3>
+                            <div class="text-4xl font-extrabold text-slate-900 mb-2">500<span class="text-xl text-slate-500 font-medium"> pcs</span></div>
+                            <p class="text-sm text-slate-600 mb-4">Custom tags included free</p>
+                            <span class="text-brand-600 font-bold text-sm">Up to 15% Discount</span>
+                        </div>
+                        <div class="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800">
+                            <h3 class="text-lg font-bold text-slate-400 mb-2">Export / Brand</h3>
+                            <div class="text-4xl font-extrabold text-white mb-2">2000<span class="text-xl text-slate-400 font-medium">+ pcs</span></div>
+                            <p class="text-sm text-slate-400 mb-4">Full custom production</p>
+                            <span class="text-brand-400 font-bold text-sm">Lowest Contract Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Custom Manufacturing Banner (NEW) -->
+            <section class="py-20 bg-brand-900 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;"></div>
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Have your own designs? We can manufacture them.</h2>
+                    <p class="text-xl text-brand-100 mb-10 max-w-2xl mx-auto">Share your tech packs or reference images. Our master tailors will create a pre-production sample for your approval within 7 days.</p>
+                    <button onclick="switchView('view-contact')" class="bg-white text-brand-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
+                        Discuss Custom Order
+                    </button>
                 </div>
             </section>
         </div>
@@ -496,7 +628,7 @@
         <!-- ================= PAGE: PROCESS & TRUST ================= -->
         <div id="view-process" class="page-view animate-fade-in bg-slate-50 min-h-screen">
             
-            <!-- Trust Stats Section -->
+            <!-- Section 1: Trust Stats Section -->
             <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
                 <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30"></div>
                 <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
@@ -511,25 +643,47 @@
                         </div>
                         <div>
                             <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">100<span class="text-brand-500">+</span></p>
-                            <p class="text-slate-400 text-sm md:text-lg font-medium">B2B Clients</p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">Active B2B Clients</p>
                         </div>
                         <div>
-                            <p class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600 mb-4">10k<span class="text-brand-500">+</span></p>
-                            <p class="text-slate-400 text-sm md:text-lg font-medium">Shirts Delivered</p>
+                            <p class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600 mb-4">50k<span class="text-brand-500">+</span></p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">Shirts Made Monthly</p>
                         </div>
                         <div>
-                            <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">29</p>
-                            <p class="text-slate-400 text-sm md:text-lg font-medium">States Served</p>
+                            <p class="text-5xl md:text-6xl font-extrabold text-white mb-4">4</p>
+                            <p class="text-slate-400 text-sm md:text-lg font-medium">Stage QC Process</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- How It Works Timeline -->
+            <!-- Section 2: Factory Capabilities (NEW) -->
+            <section class="py-24 bg-white border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="https://images.unsplash.com/photo-1612039233959-53e32e5ab6b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="rounded-3xl shadow-lg w-full h-64 object-cover transform translate-y-8">
+                            <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="rounded-3xl shadow-lg w-full h-64 object-cover">
+                        </div>
+                        <div>
+                            <span class="text-brand-600 font-bold tracking-widest uppercase text-sm mb-4 block">Inside The Factory</span>
+                            <h2 class="text-4xl font-extrabold text-slate-900 mb-6">State-of-the-Art Infrastructure in Delhi.</h2>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed">Our Karol Bagh facility is equipped with modern Japanese sewing machines and automated cutting systems, ensuring precision at scale.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-slate-700 font-medium"><i class="ph-bold ph-check text-brand-500 mr-3 text-xl"></i> Dedicated cutting, stitching, and finishing floors.</li>
+                                <li class="flex items-center text-slate-700 font-medium"><i class="ph-bold ph-check text-brand-500 mr-3 text-xl"></i> Over 150 skilled craftsmen and master tailors.</li>
+                                <li class="flex items-center text-slate-700 font-medium"><i class="ph-bold ph-check text-brand-500 mr-3 text-xl"></i> Bio-wash and fabric softening plant tie-ups.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: How It Works Timeline -->
             <section class="py-24">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-20">
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Streamlined Ordering Process</h2>
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Streamlined Sourcing Process</h2>
                         <p class="text-xl text-slate-600">From inquiry to delivery, we make bulk sourcing completely transparent and hassle-free.</p>
                     </div>
 
@@ -538,48 +692,73 @@
                         <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-slate-200 via-brand-200 to-slate-200 -translate-y-1/2 z-0 rounded-full"></div>
 
                         <div class="grid md:grid-cols-4 gap-12 md:gap-6 relative z-10">
-                            <!-- Step 1 -->
                             <div class="text-center group">
                                 <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 relative transition-all duration-300">
                                     <i class="ph-fill ph-hand-tap"></i>
                                     <div class="absolute -right-2 top-0 w-5 h-5 bg-brand-500 rounded-full animate-ping opacity-75 hidden group-hover:block"></div>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">1. Select Styles</h3>
-                                <p class="text-base text-slate-600">Choose from our catalog or share your custom technical sheets.</p>
+                                <p class="text-base text-slate-600">Choose from catalog or share custom tech sheets.</p>
                             </div>
-
-                            <!-- Step 2 -->
                             <div class="text-center group">
                                 <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 transition-all duration-300">
                                     <i class="ph-fill ph-chat-text"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">2. Request Quote</h3>
-                                <p class="text-base text-slate-600">Fill our inquiry form to get factory-direct B2B pricing immediately.</p>
+                                <p class="text-base text-slate-600">Get factory-direct B2B pricing instantly.</p>
                             </div>
-
-                            <!-- Step 3 -->
                             <div class="text-center group">
                                 <div class="w-20 h-20 mx-auto bg-white border-4 border-slate-100 group-hover:border-brand-200 rounded-full flex items-center justify-center text-2xl font-bold text-slate-400 group-hover:text-brand-600 shadow-lg mb-6 transition-all duration-300">
                                     <i class="ph-fill ph-package"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">3. Sample Check</h3>
-                                <p class="text-base text-slate-600">We dispatch physical samples to your location for quality assurance.</p>
+                                <p class="text-base text-slate-600">We dispatch physical samples for quality approval.</p>
                             </div>
-
-                            <!-- Step 4 -->
                             <div class="text-center group">
                                 <div class="w-20 h-20 mx-auto bg-brand-600 border-4 border-brand-100 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-xl mb-6 shadow-glow transform group-hover:scale-110 transition-all duration-300">
                                     <i class="ph-bold ph-truck"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">4. Fast Delivery</h3>
-                                <p class="text-base text-slate-600">Production starts. Secure dispatch directly to your retail hub.</p>
+                                <p class="text-base text-slate-600">Production starts. Secure dispatch to your hub.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Testimonials -->
+            <!-- Section 4: Quality Control (NEW) -->
+            <section class="py-20 bg-slate-900 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">4-Stage Quality Assurance</h2>
+                        <p class="text-slate-400 text-lg">Every single piece is inspected before it reaches your retail shelf.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                            <div class="text-brand-400 text-4xl mb-4"><i class="ph-light ph-swatches"></i></div>
+                            <h3 class="text-xl font-bold mb-2">1. Fabric Audit</h3>
+                            <p class="text-slate-400 text-sm">Checking GSM, shrinkage, and color fastness before cutting.</p>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                            <div class="text-brand-400 text-4xl mb-4"><i class="ph-light ph-scissors"></i></div>
+                            <h3 class="text-xl font-bold mb-2">2. Inline Inspection</h3>
+                            <p class="text-slate-400 text-sm">Monitoring stitch density (SPI) and pattern matching during assembly.</p>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                            <div class="text-brand-400 text-4xl mb-4"><i class="ph-light ph-magnifying-glass"></i></div>
+                            <h3 class="text-xl font-bold mb-2">3. End-of-Line Check</h3>
+                            <p class="text-slate-400 text-sm">Checking for loose threads, button security, and measurement specs.</p>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                            <div class="text-brand-400 text-4xl mb-4"><i class="ph-light ph-box-taping"></i></div>
+                            <h3 class="text-xl font-bold mb-2">4. Packaging Audit</h3>
+                            <p class="text-slate-400 text-sm">Ensuring correct tagging, folding, and master carton sealing.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Testimonials -->
             <section class="py-24 bg-white border-t border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-16 text-center tracking-tight">What Retailers Say</h2>
@@ -638,19 +817,47 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Section 6: Certifications Banner (NEW) -->
+            <section class="py-12 bg-slate-100 border-t border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">Compliant with Industry Standards</p>
+                    <div class="flex flex-wrap justify-center gap-10 opacity-70">
+                        <div class="flex items-center text-lg font-bold text-slate-800"><i class="ph-fill ph-certificate text-3xl mr-2 text-brand-600"></i> ISO 9001:2015</div>
+                        <div class="flex items-center text-lg font-bold text-slate-800"><i class="ph-fill ph-leaf text-3xl mr-2 text-green-600"></i> 100% Cotton Mark</div>
+                        <div class="flex items-center text-lg font-bold text-slate-800"><i class="ph-fill ph-globe-hemisphere-west text-3xl mr-2 text-blue-600"></i> Export Ready</div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- ================= PAGE: CONTACT (INQUIRY) ================= -->
-        <div id="view-contact" class="page-view animate-fade-in bg-white min-h-screen pt-10">
-            <section class="py-12 bg-white relative overflow-hidden">
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Let's Build Your Inventory</h1>
-                        <p class="text-xl text-slate-600">Get a custom quote within 2 hours. Factory direct pricing guaranteed.</p>
+        <div id="view-contact" class="page-view animate-fade-in bg-slate-50 min-h-screen pt-10">
+            
+            <!-- Section 1: Direct Contact Cards (NEW) -->
+            <section class="py-12">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center">
+                            <div class="w-12 h-12 bg-brand-50 text-brand-600 rounded-full flex items-center justify-center text-2xl mr-4"><i class="ph-fill ph-whatsapp-logo"></i></div>
+                            <div><p class="text-sm text-slate-500 font-bold uppercase">Wholesale Sales</p><p class="text-lg font-extrabold text-slate-900">+91 98XXX XXXXX</p></div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center">
+                            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl mr-4"><i class="ph-fill ph-envelope"></i></div>
+                            <div><p class="text-sm text-slate-500 font-bold uppercase">Email Enquiries</p><p class="text-lg font-extrabold text-slate-900">sales@delhishirts.com</p></div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center">
+                            <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-2xl mr-4"><i class="ph-fill ph-map-pin"></i></div>
+                            <div><p class="text-sm text-slate-500 font-bold uppercase">Factory Visit</p><p class="text-lg font-extrabold text-slate-900">Karol Bagh, Delhi</p></div>
+                        </div>
                     </div>
+                </div>
+            </section>
 
+            <!-- Section 2: Main Form Area -->
+            <section class="py-8 relative overflow-hidden">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-100">
-                        
                         <!-- Left: Copy & Value Prop -->
                         <div class="bg-slate-900 text-white p-10 lg:p-16 lg:w-5/12 flex flex-col justify-center relative overflow-hidden">
                             <div class="absolute top-0 right-0 w-80 h-80 bg-brand-500 rounded-full filter blur-[120px] opacity-30"></div>
@@ -686,16 +893,6 @@
                                         Pan India Secure Shipping
                                     </li>
                                 </ul>
-
-                                <div class="mt-auto border-t border-slate-800 pt-8 flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
-                                        <i class="ph-fill ph-map-pin text-brand-400 text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Factory Location</p>
-                                        <p class="text-lg font-bold text-white mt-1">Karol Bagh, New Delhi</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -704,19 +901,16 @@
                             <h3 class="text-3xl font-bold text-slate-900 mb-8">Request Wholesale Pricing</h3>
                             <form id="inquiryForm" class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Name -->
                                     <div>
                                         <label for="name" class="block text-sm font-bold text-slate-700 mb-2">Full Name / Business Name <span class="text-red-500">*</span></label>
                                         <input type="text" id="name" required class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-white shadow-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-base font-medium placeholder-slate-400" placeholder="e.g. Rahul Clothing Co.">
                                     </div>
-                                    <!-- Phone -->
                                     <div>
                                         <label for="phone" class="block text-sm font-bold text-slate-700 mb-2">Phone / WhatsApp <span class="text-red-500">*</span></label>
                                         <input type="tel" id="phone" required class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-white shadow-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-base font-medium placeholder-slate-400" placeholder="+91 00000 00000">
                                     </div>
                                 </div>
 
-                                <!-- Product Interest -->
                                 <div>
                                     <label for="product" class="block text-sm font-bold text-slate-700 mb-2">Product Interest <span class="text-red-500">*</span></label>
                                     <div class="relative">
@@ -736,7 +930,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Quantity -->
                                 <div>
                                     <label class="block text-sm font-bold text-slate-700 mb-3">Estimated Quantity <span class="text-slate-400 font-medium ml-1">(MOQ: 50)</span></label>
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -759,7 +952,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Submit CTA -->
                                 <button type="submit" class="btn-shine w-full mt-4 py-5 px-6 text-white font-extrabold text-lg rounded-xl hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-500/30 transition-all duration-300 flex justify-center items-center group shadow-lg">
                                     Get Best Wholesale Price
                                     <i class="ph-bold ph-paper-plane-tilt ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform text-xl"></i>
@@ -770,6 +962,54 @@
                                 </p>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Sample Kit (NEW) -->
+            <section class="py-12">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-brand-50 border border-brand-200 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-2/3 mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Want to test our fabric quality?</h3>
+                            <p class="text-slate-600">Order our comprehensive Retailer Sample Kit. It includes 3 fully stitched shirts from different categories and a master swatch book of 50+ fabrics.</p>
+                        </div>
+                        <div class="md:w-1/3 text-right">
+                            <button onclick="alert('Sample Kit Request form will open here.')" class="bg-brand-600 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-700 transition-colors w-full md:w-auto shadow-md">Request Kit (₹999)</button>
+                            <p class="text-xs text-slate-500 mt-2 text-center md:text-right">100% Refundable on your first bulk order.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Wholesale FAQ (NEW) -->
+            <section class="py-16 bg-white border-y border-slate-100">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-extrabold text-center mb-12">Frequently Asked Questions</h2>
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">What is the Minimum Order Quantity (MOQ)?</h4>
+                            <p class="text-slate-600 text-sm">Our standard MOQ is 50 pieces per style/color. This includes a complete size set ratio (usually M, L, XL, XXL).</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Do you provide custom brand labels?</h4>
+                            <p class="text-slate-600 text-sm">Yes! For orders above 200 pieces, we can manufacture shirts with your custom woven tags, wash care labels, and branded packaging at a nominal extra cost.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">How long does shipping take?</h4>
+                            <p class="text-slate-600 text-sm">In-stock catalog items are dispatched within 48 hours. Custom manufacturing orders take 14-21 days depending on fabric availability and order size. We ship Pan-India via reliable transport partners.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 5: Map Placeholder (NEW) -->
+            <section class="py-12 bg-slate-100">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-slate-300 w-full h-80 rounded-3xl flex items-center justify-center flex-col text-slate-500 border-2 border-dashed border-slate-400">
+                        <i class="ph-fill ph-map-pin text-4xl mb-2"></i>
+                        <p class="font-bold">Interactive Map Placeholder</p>
+                        <p class="text-sm">Karol Bagh Industrial Area, Delhi</p>
                     </div>
                 </div>
             </section>
@@ -857,37 +1097,32 @@
             Chat on WhatsApp
         </span>
         <i class="ph-fill ph-whatsapp-logo text-4xl"></i>
-        <!-- Ping effect -->
         <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
     </a>
 
     <!-- Scripts -->
     <script>
-        // --- 1. PRELOADER ---
+        // --- PRELOADER ---
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('preloader');
                 loader.style.opacity = '0';
                 loader.style.visibility = 'hidden';
-            }, 800); // slight delay to show the animation
+            }, 800); 
         });
 
-        // --- 2. MULTIPAGE (SPA) ROUTING LOGIC ---
+        // --- MULTIPAGE (SPA) ROUTING LOGIC ---
         function switchView(viewId) {
-            // Hide all views
             document.querySelectorAll('.page-view').forEach(el => {
                 el.classList.remove('active');
-                // Force reflow to restart animations
                 void el.offsetWidth; 
             });
 
-            // Show target view
             const target = document.getElementById(viewId);
             if(target) {
                 target.classList.add('active');
             }
 
-            // Update Desktop Nav Active States
             document.querySelectorAll('.nav-link').forEach(link => {
                 if(link.dataset.target === viewId) {
                     link.classList.remove('text-slate-600');
@@ -898,7 +1133,6 @@
                 }
             });
 
-            // Update Mobile Nav Active States
             document.querySelectorAll('.mobile-nav-link').forEach(link => {
                 if(link.dataset.target === viewId) {
                     link.classList.add('text-brand-600', 'bg-brand-50');
@@ -909,7 +1143,6 @@
                 }
             });
 
-            // Close mobile menu if open
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.querySelector('#mobile-menu-btn i');
             if(!menu.classList.contains('hidden')) {
@@ -918,13 +1151,35 @@
                 menuIcon.classList.add('ph-list');
             }
 
-            // Scroll to top of the page smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- 3. UI INTERACTIONS ---
+        // --- CATALOG FILTERING LOGIC ---
+        function filterCategory(category) {
+            // Update buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.dataset.filter === category) {
+                    btn.classList.remove('bg-slate-100', 'text-slate-600');
+                    btn.classList.add('bg-slate-900', 'text-white');
+                } else {
+                    btn.classList.add('bg-slate-100', 'text-slate-600');
+                    btn.classList.remove('bg-slate-900', 'text-white');
+                }
+            });
+
+            // Filter cards
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden-item');
+                } else {
+                    card.classList.add('hidden-item');
+                }
+            });
+        }
+
+        // --- UI INTERACTIONS ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
             const menuIcon = btn.querySelector('i');
@@ -940,43 +1195,40 @@
                 }
             });
 
-            // Form Submission Simulation
             const form = document.getElementById('inquiryForm');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btn = form.querySelector('button[type="submit"]');
-                const originalText = btn.innerHTML;
-                
-                // Loading state
-                btn.innerHTML = '<i class="ph ph-spinner animate-spin text-2xl mr-3"></i> Sending...';
-                btn.classList.add('opacity-80', 'cursor-not-allowed', 'pointer-events-none');
-                btn.classList.remove('btn-shine');
-                
-                // Simulate API call
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="ph-bold ph-check-circle text-2xl mr-3"></i> Request Sent Successfully!';
-                    btn.classList.remove('bg-slate-900', 'hover:bg-brand-600');
-                    btn.classList.add('bg-green-600', 'hover:bg-green-700');
-                    form.reset();
+            if(form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
                     
-                    // Reset button after 4 seconds
+                    submitBtn.innerHTML = '<i class="ph ph-spinner animate-spin text-2xl mr-3"></i> Sending...';
+                    submitBtn.classList.add('opacity-80', 'cursor-not-allowed', 'pointer-events-none');
+                    submitBtn.classList.remove('btn-shine');
+                    
                     setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.classList.add('btn-shine');
-                        btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'opacity-80', 'cursor-not-allowed', 'pointer-events-none');
-                    }, 4000);
-                }, 1500);
-            });
+                        submitBtn.innerHTML = '<i class="ph-bold ph-check-circle text-2xl mr-3"></i> Request Sent Successfully!';
+                        submitBtn.classList.remove('bg-slate-900', 'hover:bg-brand-600');
+                        submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                        form.reset();
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.classList.add('btn-shine');
+                            submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'opacity-80', 'cursor-not-allowed', 'pointer-events-none');
+                        }, 4000);
+                    }, 1500);
+                });
+            }
             
-            // Navbar glassmorphism change on scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
                     navbar.classList.add('shadow-md');
-                    navbar.classList.replace('bg-white/75', 'bg-white/95');
+                    navbar.classList.replace('bg-white/85', 'bg-white/95');
                 } else {
                     navbar.classList.remove('shadow-md');
-                    navbar.classList.replace('bg-white/95', 'bg-white/75');
+                    navbar.classList.replace('bg-white/95', 'bg-white/85');
                 }
             });
         });
